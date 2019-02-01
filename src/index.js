@@ -1,6 +1,7 @@
 // @flow
 
 import Toast from './Toast.vue'
+import ToastRenderless from './ToastRenderless.vue'
 import { update } from './utils'
 
 export function createComponent(options = {}) {
@@ -15,5 +16,5 @@ export function createComponent(options = {}) {
   })
 }
 
-export { Toast }
+export { Toast, ToastRenderless }
 export * from './module'

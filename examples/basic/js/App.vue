@@ -29,13 +29,29 @@
     <div class="submit">
       <input class="submit-button" type="button" value="Send Notification" @click="addToast({ text, type })">
     </div>
+    <section>
+      <h1>Renderless</h1>
+      <ToastRenderless>
+        <div
+          class="my-toasts-container"
+          slot-scope="{messages, close}"
+        >
+          <div v-for="m in messages" :key="m.id">
+            <span v-html="m.text" />
+            <button @click="close(m.id)">Close</button>
+          </div>
+        </div>
+      </ToastRenderless>
+    </section>
 
-    <toast :position="position"></toast>
+    <toast :position="position" html></toast>
+
+
   </article>
 </template>
 
 <script>
-import { Toast, ADD_TOAST_MESSAGE } from 'vuex-toast'
+import { Toast, ToastRenderless, ADD_TOAST_MESSAGE } from 'vuex-toast'
 import { mapActions } from 'vuex'
 
 export default {
@@ -55,7 +71,8 @@ export default {
     })
   },
   components: {
-    Toast
+    Toast,
+    ToastRenderless
   }
 }
 </script>
